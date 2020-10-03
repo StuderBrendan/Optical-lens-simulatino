@@ -1,0 +1,104 @@
+<!--
+    Algo Num - Laboratoire personnel
+    Brendan Studer
+    07.05.2019
+
+    Version : 1.0
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AN2019_Labo_personnel_BrendanStuder</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: arial;
+        }
+        #container
+        {
+            
+        }
+
+        canvas {
+            border: solid 3px #414040;
+            background-color: black;
+        }
+
+        #parameters {
+            background-color: #e6dfdf;
+            text-align: center;
+            float: right;
+            width: auto;
+            font-size: 0.8em;
+
+        }
+
+    </style>
+</head>
+
+<body onload="draw()">
+    <h1>Laboratoire personnel - Optical lens simulation</h1>
+    <hr>
+    Brendan Studer<br>
+    14 juin 2019
+    <hr>
+    <div id="container">
+        <canvas id="simulationArea" width="1000px" height="500px">
+        </canvas>
+
+
+
+        <div id="parameters">
+           <p>object mode</p>
+           lens<input type="radio" id="lensRadio" name="objectType" checked>
+           ray<input type="radio" id="rayRadio" name="objectType">
+           <hr>
+            <p>lens focal distance:</p>
+            <p id="focalvalue">10</p>
+            -100<input type="range" min="-100" max="100" value="10" id="focalInput" oninput="updateFocal()">100
+            <p>lens length</p>
+            <p id="lengthvalue">100</p>
+            1<input type="range" min="1" max="200" id="lenghtSlider" oninput="updateLength()">200
+            <p>Light angle</p>
+            <p id="anglevalue">90</p>
+            0<input type="range" min="0" max="360" id="lightAngle" oninput="draw()" value="90">360 <br>
+            <input type="button" value="Remove all lenses" onclick="removeAllLens()">
+            <hr>
+            <p>Manual</p>
+            <p><strong>Lens mode</strong><br>double click: place a lens<br>click on a lens : move the lens </p>
+            <p><strong>Ray mode</strong><br>click: move the light</p>
+        </div>
+    </div>
+
+
+
+   <script src="jquery-3.4.1.js"></script>
+    <script src="jcanvas.js"></script>
+    <script src="lentilles.js"></script>
+</body>
+
+</html>
+
+<!--
+    Dans le cadre de mon laboratoire personnel, j'ai décidé de créer une simulation
+    d'optique géométrique, plus précisement de l'intéraction entre un rayon lumineux
+    et des lentilles minces, convergentes ou divergentes.
+    
+    J'ai implémenté le calcul de déviation des lentilles en utilisant la géométrie
+    vectorielle et les lois des lentilles minces. Le calcul des rayons se fait par
+    récursivité.
+
+    Par manque de temps, je n'ai pas pu optimiser mon code. J'aurais pu utiliser certaines
+    propriétés du calcul vectoriel (produit vectoriel, produit scalaire, etc..) pour calculer
+    plus simplement les rayons. Trouver une alternative à la récursivité peut également être
+    une bonne optimisation car celle-ci peut provoquer des boucles infinies dans de très rares
+    cas, ce qui fait crasher la simulation.
+
+    L'angle du rayon lumineux ainsi que la longueur et la distance focale des lentilles sont
+    modifiable par des sliders. On peut également alterner les modes "lens" et "ray" pour
+    respectivement placer/déplacer les lentilles ou déplacer la source lumineuse.
+    
+    Pour réaliser ce projet, je me suis aidé des librairies JQuery et JCanvas.
+-->
