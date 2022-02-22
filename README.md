@@ -1,2 +1,2 @@
 # Optical-lens-simulatino
-Simulation of how light rays reacto to opctial lens
+Simulation of how light rays react to opctial lens
